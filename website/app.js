@@ -1,4 +1,4 @@
-const baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const key = '635019b1b185197f1525d4d444260a27';
 
 const hostApi = 'http://localhost:3000';
@@ -14,9 +14,9 @@ const date = d.toLocaleString('en-US', {
 document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(e) {
-    const cityName = document.getElementById('city').value;
+    const zip = document.getElementById('zip').value;
     const feelings = document.getElementById('feelings').value;
-    getTemperature(baseURL, cityName, key)
+    getTemperature(baseURL, zip, key)
         .then(async (data) => {
             try {
                 let response = await postData(`${hostApi}/addWeatherData`, {
@@ -29,11 +29,14 @@ function performAction(e) {
                     document.getElementById('alert').remove()
                 }
             } catch (error) {
+                if (document.getElementById('alert')) {
+                    document.getElementById('alert').remove()
+                }
                 const header = document.getElementById('header')
                 let alert = document.createElement('div');
                 alert.setAttribute('role', 'alert');
                 alert.setAttribute('class', 'alert alert-danger')
-                alert.innerHTML = "City name is not correct";
+                alert.innerHTML = "Zip is not correct";
                 alert.setAttribute('id', 'alert');
                 header.appendChild(alert);
                 console.log(error.message);
@@ -41,9 +44,9 @@ function performAction(e) {
         })
 }
 
-const getTemperature = async (baseURL, cityName, key) => {
+const getTemperature = async (baseURL, zip, key) => {
     try {
-        const response = await fetch(baseURL + cityName + ',us' + '&APPID=' + key)
+        const response = await fetch(baseURL + zip + ',us' + '&APPID=' + key)
         const data = await response.json();
         console.log(data);
         if (response.ok === true) {

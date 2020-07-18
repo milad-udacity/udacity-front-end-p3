@@ -1,21 +1,23 @@
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const key = '635019b1b185197f1525d4d444260a27';
 
+const hostApi = 'http://localhost:3000' ;    
+
 let d = new Date();
-const date = d.toLocaleString('en-US', { 
-    month: 'long', 
-    day: 'numeric', 
-    year: 'numeric' 
+const date = d.toLocaleString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
 });
 
 document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(e) {
     const postCode = document.getElementById('city').value;
-    const feelings = document.getElementById('feelings').value;    
+    const feelings = document.getElementById('feelings').value;
     getTemperature(baseURL, postCode, key)
         .then(function (data) {
-            postData('http://localhost:3000/addWeatherData', {
+            postData(`${hostApi}/addWeatherData`, {
                 temperature: data.main.temp,
                 date,
                 user_response: feelings
@@ -27,9 +29,9 @@ function performAction(e) {
 }
 
 const getTemperature = async (baseURL, code, key) => {
-    const response = await fetch(baseURL + code + ',us' + '&APPID=' + key)    
+    const response = await fetch(baseURL + code + ',us' + '&APPID=' + key)
     try {
-        const data = await response.json();                
+        const data = await response.json();
         return data;
     }
     catch (error) {
@@ -46,8 +48,8 @@ const postData = async (url = '', data = {}) => {
         },
         body: JSON.stringify(data),
     });
-    try {        
-        const newData = await postRequest.json();        
+    try {
+        const newData = await postRequest.json();
         return newData;
     }
     catch (error) {
@@ -57,9 +59,9 @@ const postData = async (url = '', data = {}) => {
 
 // Update user interface
 const updateUI = async () => {
-    const request = await fetch('http://localhost:3000/all');
+    const request = await fetch(`${hostApi}/all`);
     try {
-        const allData = await request.json();        
+        const allData = await request.json();
         document.getElementById('date').innerHTML = allData.date;
         document.getElementById('temp').innerHTML = allData.temperature;
         document.getElementById('content').innerHTML = allData.user_response;

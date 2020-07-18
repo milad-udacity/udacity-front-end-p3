@@ -1,7 +1,7 @@
 {
-  "name": "weather-journal-app-master",
+  "name": "weather-app",
   "version": "1.0.0",
-  "description": "## Overview This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI with weather data and their provided response in text field. Also, it is providing current date.",
+  "description": "This is a weather app, this app used an openWeather api",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

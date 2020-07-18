@@ -31,6 +31,7 @@ function listening() {
 app.get('/all', sendData)
 
 function sendData(req, res) {
+    console.log(projectData);
     res.status(200).json(projectData)
 }
 

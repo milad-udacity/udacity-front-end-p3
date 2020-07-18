@@ -1,5 +1,5 @@
 # Weather Journal
-This a Weather App used openWeather api
+This a Weather App used openWeather api, on port 3000 if process.env.PORT not set
 
 ## install
 ```text

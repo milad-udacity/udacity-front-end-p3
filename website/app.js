@@ -1,7 +1,8 @@
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const key = '635019b1b185197f1525d4d444260a27';
 
-const hostApi = 'http://localhost:3000' ;    
+// const hostApi = 'http://localhost:3000' ;    
+const hostApi = 'https://weather-app-p3.herokuapp.com' ;    
 
 let d = new Date();
 const date = d.toLocaleString('en-US', {

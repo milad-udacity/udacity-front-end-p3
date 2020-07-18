@@ -2,12 +2,16 @@ const baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const key = '635019b1b185197f1525d4d444260a27';
 
 let d = new Date();
-const date = d.toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const date = d.toLocaleString('en-US', { 
+    month: 'long', 
+    day: 'numeric', 
+    year: 'numeric' 
+});
 
 document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(e) {
-    const postCode = document.getElementById('zip').value;
+    const postCode = document.getElementById('city').value;
     const feelings = document.getElementById('feelings').value;    
     getTemperature(baseURL, postCode, key)
         .then(function (data) {

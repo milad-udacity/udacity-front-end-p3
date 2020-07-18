@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Journal</title>
+  <meta name="author" content="Milad E. Fahmy" />
+  <meta name="description" content="Weather Journal App"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark">
+  <div id="container-fluid ">
+    <div class="row p-0 m-0">
+      <div class="col-12">
+        <h1 class="text-center display-4 text-success py-3">Weather Journal App</h1>
+      </div>
+    </div>
+
+    <div class="row p-0 m-0">
+      <div class="col-12 col-md-6 offset-md-3 border border-primary py-5 bg-white rounded">
+        <div class="form-group">
+          <label for="zip">Enter City Name here</label>
+          <input type="text" id="zip" placeholder="Enter City Name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="feelings">How are you feeling today?</label>
+          <textarea id="feelings" placeholder="Enter your feelings here" class="form-control"></textarea>
+        </div>
+        <button id="generate" type="submit" class="btn btn-outline-primary btn-block"> Generate </button>
+      </div>
+    </div>
+
+    <div class="row p-0 m-0">
+      <div class="col-12 col-md-6 offset-md-3 my-2 px-0">
+        <div class="card p-0 m-0">
+          <div class="card-body" id="entryHolder">
+            <h5 class="card-title text-center py-2">Most Recent Entry</h5>
+            <p class="card-text">
+              Today's date: <span id="date"></span>
+            </p>
+            <p class="card-text">
+              Temperature right now in Kelvin is: <span id="temp"></span>
+            </p>
+            <p class="card-text">
+              You can find your response below: <span id="content"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="app.js" type="text/javascript"></script>
+
+</body>
+
+</html>
